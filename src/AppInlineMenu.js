@@ -24,8 +24,8 @@ const AppInlineMenu = (props) => {
         <>
             {!isMobile() && (isStatic() || isSlim() || isSidebar()) && <div className={classNames('layout-inline-menu', { 'layout-inline-menu-active': props.activeInlineProfile })}>
                 <button className="layout-inline-menu-action p-link" onClick={props.onChangeActiveInlineMenu}>
-                    <img src="assets/layout/images/profile-image.png" alt="avatar" style={{ width: '44px', height: '44px' }} />
-                    <span className="layout-inline-menu-text">Gene Russell</span>
+                    <img src="assets/layout/images/image.png" alt="avatar" style={{ width: '60px', height: '60px' }} />
+                    <span className="layout-inline-menu-text">Menu</span>
                     <i className="layout-inline-menu-icon pi pi-angle-down"></i>
                 </button>
                 <CSSTransition classNames="p-toggleable-content" timeout={{ enter: 1000, exit: 450 }} in={props.activeInlineProfile} unmountOnExit>
@@ -33,7 +33,7 @@ const AppInlineMenu = (props) => {
                         <li className="layout-inline-menu-action-item">
                             <button className="p-link">
                                 <i className="pi pi-power-off pi-fw"></i>
-                                <span>Logout</span>
+                                <span>Sair</span>
                             </button>
                         </li>
                         <li className="layout-inline-menu-action-item">
@@ -45,7 +45,7 @@ const AppInlineMenu = (props) => {
                         <li className="layout-inline-menu-action-item">
                             <button className="p-link">
                                 <i className="pi pi-user pi-fw"></i>
-                                <span>Profile</span>
+                                <span>Perfil</span>
                             </button>
                         </li>
                     </ul>

@@ -9,13 +9,18 @@ import AppRightMenu from './AppRightMenu';
 import AppBreadcrumb from './AppBreadcrumb';
 import AppMenu from './AppMenu';
 import FormLayoutDemo from './components/FormLayoutDemo';
-import Departamento from './components/Departamento';
-import Grupo from './components/Grupo';
+import Servico from './components/Servico';
+import Produto from './components/Produto';
+import Cliente from './components/Cliente';
+import FormacaoPrecoProduto from './components/FormcaoPrecoProduto';
+import Login from'./pages/Login/Login';
+
+
 import 'toastr/build/toastr.min.js';
 
 
 
-import PrimeReact from 'primereact/api';
+import PrimeReact,{addLocale, locale} from 'primereact/api';
 import { Tooltip } from 'primereact/tooltip';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
@@ -56,8 +61,10 @@ const App = (props) => {
         {
             label: 'Menu Cadastro', icon: 'pi pi-star',
             items: [
-                { label: 'Departamento', icon: 'pi pi-id-card', to: '/departamento' },
-                { label: 'Grupo', icon: 'pi pi-id-card', to: '/grupo'}
+                { label: 'Serviço', icon: 'pi pi-id-card', to: '/servico' },
+                { label: 'Produto', icon: 'pi pi-id-card', to: '/produto'},
+                { label: 'Cliente', icon: 'pi pi-id-card', to: '/cliente'},
+                { label: 'Formação Preço Produto', icon: 'pi pi-id-card', to: '/formcaoprecoproduto'}
                
             ]
         },
@@ -97,9 +104,11 @@ const App = (props) => {
 
     const routes = [
         { parent: 'Dashboard', label: 'Sales Dashboard' },
-        { parent: 'Menu Cadastro', label: 'Departamento' },  
-        { parent: 'Menu Cadastro', label: 'Grupo'},    
-        { parent: 'Pages', label: 'Login' } 
+        { parent: 'Menu Cadastro', label: 'Serviços' },  
+        { parent: 'Menu Cadastro', label: 'Produto'},
+        { parent: 'Menu Cadastro', label: 'Cliente'}, 
+        { parent: 'Menu Cadastro', label: 'Formação Preço Produto'}
+        //{ parent: 'Pages', label: 'Login' } 
       
     ];
 
@@ -328,6 +337,34 @@ const App = (props) => {
         'p-ripple-disabled': !ripple
     });
 
+    const [logado] = useState(localStorage.getItem('@token') ? true : false);
+
+    addLocale('pt_BR', {
+        firstDayOfWeek: 1,
+        dayNames: ['Janeiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto'],
+        dayNamesShort: ['dom', 'seg', 'ter', 'que', 'qui', 'sex', 'sáb'],
+        dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'],
+        monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+        monthNamesShort: ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'],
+        today: 'Hoje',
+        clear: 'Limpar',
+        startsWith: 'Inicia com',
+        matchAll : 'Todos',
+        matchAny : 'Qualquer',
+        contains : 'Contém',
+        notContains : 'Não contém',
+        endsWith : 'Termina com',
+        equals : 'Igual',
+        notEquals:  'Não igual',
+        addRule : 'Adicionar regra',
+        removeRule : 'Remover regra',
+        apply : 'Filtrar'
+
+    })
+
+
+    locale('pt_BR')
+    if(logado)
     return (
         <div className={layoutClassName} onClick={onDocumentClick}>
             <Tooltip ref={copyTooltipRef} target=".block-action-copy" position="bottom" content="Copied to clipboard" event="focus" />
@@ -351,8 +388,11 @@ const App = (props) => {
 
                 <div className="layout-main-content">
                     <Route path="/formlayout" component={FormLayoutDemo} />
-                    <Route path="/departamento" component={Departamento} />
-                    <Route path="/grupo" component={Grupo} />
+                    <Route path="/servico" component={Servico} />
+                    <Route path="/produto" component={Produto} />
+                    <Route path="/cliente" component={Cliente} />
+                    <Route path="/formcaoprecoproduto" component={FormacaoPrecoProduto} />
+                    
                 </div>
 
                 <AppFooter colorScheme={props.colorScheme} />
@@ -369,6 +409,14 @@ const App = (props) => {
         </div>
     );
 
+    else
+    return (
+            <div>
+                <Login/>
+                
+            </div>
+        
+    )
 }
 
 export default App;

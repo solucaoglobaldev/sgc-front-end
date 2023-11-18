@@ -12,8 +12,7 @@ export const Login = (props) => {
 			<div className="login-panel p-fluid">
 				<div className="flex flex-column">
 					<div className="flex align-items-center mb-6 logo-container">
-						<img src={`assets/layout/images/logo-${props.colorScheme === 'light' ? 'dark' : 'light'}.png`} className="login-logo" alt="login-logo"/>
-						<img src={`assets/layout/images/appname-${props.colorScheme === 'light' ? 'dark' : 'light'}.png`} className="login-appname" alt="login-appname"/>
+						
 					</div>
 					<div className="form-container">
 						<span className="p-input-icon-left">
@@ -34,8 +33,7 @@ export const Login = (props) => {
 
 				<div className="login-footer flex align-items-center">
 					<div className="flex align-items-center login-footer-logo-container">
-						<img src="assets/layout/images/logo-gray.png" className="login-footer-logo" alt="login-footer-logo" />
-						<img src="assets/layout/images/appname-gray.png" className="login-footer-appname" alt="login-footer-appname" />
+						
 					</div>
 					<span>Copyright 2021</span>
 				</div>

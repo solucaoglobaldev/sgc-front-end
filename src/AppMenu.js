@@ -189,12 +189,10 @@ const AppMenu = (props) => {
         <div className={classNames('layout-menu-wrapper', { 'layout-sidebar-active': props.sidebarActive })}
             onClick={props.onMenuClick} onMouseOver={props.onSidebarMouseOver} onMouseLeave={props.onSidebarMouseLeave}>
             <div className="menu-logo">
-                <button className="logo p-link">
-                    <img src={`assets/layout/images/logo-${props.colorScheme === 'light' ? 'dark' : 'light'}.png`} alt="logo" onClick={() => history.push('/')} />
+                <button className="logo p-link">                
+                  <img src={`assets/layout/images/image.png`} alt="logo" style={{ width: '25px', height: '25px' }} onClick={() => history.push('/')} />
                 </button>
-                <button href="#" className="app-name p-link">
-                    <img src={`assets/layout/images/appname-${props.colorScheme === 'light' ? 'dark' : 'light'}.png`} alt="app-name" onClick={() => history.push('/')} />
-                </button>
+              
                 <button href="#" className="menu-pin p-link" onClick={props.onToggleMenu}>
                     {isOverlay() && <span className="pi pi-times"></span>}
                     {isSidebar() && !props.sidebarStatic && props.pinActive && <span className="pi pi-unlock"></span>}
